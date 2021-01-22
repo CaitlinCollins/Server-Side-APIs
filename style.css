@@ -1,0 +1,12 @@
+header {
+	height: 100px;
+	background-color: navy;
+}
+
+h1 {
+	padding: 25px;
+	color: white;
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+	font-weight: bold;
+}
