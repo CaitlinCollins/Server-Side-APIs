@@ -1,8 +1,16 @@
 var inputCity = $("textarea");
 
 // Event listener to grab the name of the city on click.
-$("button").on("click", function getCityInfo() {
+$("button").on("click", function (event) {
+	event.preventDefault();
+	// Storing the city name.
+	var inputCity = $("textarea");
 	var city = inputCity.val().trim();
+	// Running the searchCity function passing in the city as an argument.
+	searchCity(city);
+});
+
+function searchCity(city) {
 	var queryURL =
 		"http://api.openweathermap.org/data/2.5/weather?q=" +
 		city +
@@ -51,7 +59,28 @@ $("button").on("click", function getCityInfo() {
 		$("article").append(pWind);
 
 		// Add the current UV Index to the fourth <p> tag.
+		var latitude = response.coord.lat;
+		console.log(latitude);
+		var longitude = response.coord.lon;
+		console.log(longitude);
+
+		// New ajax call
+		oneCall(latitude, longitude);
 	});
 
-	// if city doesn't exist
-});
+	function oneCall(latitude, longitude) {
+		var queryURL =
+			"https://api.openweathermap.org/data/2.5/onecall?lat=" +
+			latitude +
+			"&lon=" +
+			longitude +
+			"&exclude={part}&appid=e90f89da353464dd1dc479b73a3a777e";
+
+		$.ajax({
+			url: queryURL,
+			method: "GET",
+		}).then(function (response) {
+			console.log(response);
+		});
+	}
+}
