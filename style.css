@@ -1,6 +1,6 @@
 header {
 	height: 90px;
-	background-color: navy;
+	background-color: rgb(3, 3, 241);
 }
 
 article {
@@ -12,10 +12,13 @@ article {
 }
 
 aside {
-	background-color: rgb(206, 236, 247);
+	background-color: lightgray;
 	width: 340px;
 	height: 660px;
 	margin-bottom: 20px;
+}
+main {
+	background-color: lightgray;
 }
 
 h1 {
@@ -99,24 +102,29 @@ button {
 	display: inline-block;
 	height: 180px;
 	width: 160px;
-	background-color: navy;
-	margin: 20px 10px 20px 30px;
+	background-color: rgb(200, 231, 245);
+	margin: 20px;
+}
+
+.dates {
+	color: grey;
+	font-size: 22px;
+	margin: 8px 0 0 0;
+	padding: 0 0 10px 10px;
 }
 
 .days {
-	color: rgb(241, 239, 239);
+	color: grey;
 	font-size: 18px;
 	text-align: left;
-	padding: 0 0 3px 5px;
+	padding: 0 0 6px 10px;
+	margin: 0;
 }
 
-/* #uvIndex {
-	border-style: solid;
-	border-color: red;
-	background-color: red;
-	width: 45px;
-	height: 30px;
-} */
+.dailyIcon {
+	width: 50px;
+	margin: 0 0 6px 10px;
+}
 
 .searches {
 	width: 310px;

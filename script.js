@@ -123,16 +123,19 @@ $(document).ready(function () {
 					dailyDiv.attr("class", "fiveDay");
 					// Get the date.
 					var dateEl = $("<p>");
-					dateEl.attr("class", "today");
+					dateEl.attr("class", "dates");
 					var newDate = moment()
 						.add(i + 1, "days")
 						.format("M/D/YYYY");
 					dateEl.text(newDate);
 					// Get the icon.
-					var imgIcon = $("<p>");
-					imgIcon.attr("class", "days");
-					var icon = daily[i].weather.icon;
-					imgIcon.html(icon);
+					var icon = daily[i].weather[0].icon;
+					var iconEl = $("<img>");
+					iconEl.attr("class", "dailyIcon");
+					iconEl.attr(
+						"src",
+						"http://openweathermap.org/img/wn/" + icon + ".png"
+					);
 					// Get the daily high temp.
 					var tempEl = $("<p>");
 					tempEl.attr("class", "days");
@@ -147,7 +150,7 @@ $(document).ready(function () {
 					humEl.text("Humidity: " + hum + " %");
 					// Append everything to the page.
 					dailyDiv.append(dateEl);
-					dailyDiv.append(imgIcon);
+					dailyDiv.append(iconEl);
 					dailyDiv.append(tempEl);
 					dailyDiv.append(humEl);
 					sectionEl.append(dailyDiv);
