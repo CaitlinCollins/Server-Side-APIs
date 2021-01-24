@@ -41,9 +41,12 @@ $(document).ready(function () {
 			var today = moment().format("(M/D/YY)");
 			var newH2 = $("<h2>");
 			var icon = response.weather[0].icon;
-			newH2.html(cityName + " " + today + " " + icon);
+			var iconEl = $("<img>");
+			iconEl.attr("class", "mainIcon");
+			iconEl.attr("src", "http://openweathermap.org/img/wn/" + icon + ".png");
+			newH2.html(cityName + " " + today + " ");
 			$("article").append(newH2);
-
+			$("article").append(iconEl);
 			// Add the current temerature to the first <p> tag.
 			var tempK = response.main.temp;
 			var tempF = (tempK - 273.15) * 1.8 + 32;
@@ -94,9 +97,13 @@ $(document).ready(function () {
 				// Add the current UV Index to the fourth <p> tag.
 				var uvIndex = response.current.uvi;
 				var pIndex = $("<p>");
-				pIndex.attr("class", "today");
+				var pUV = $("<p>");
+				pUV.attr("class", "today uv");
+				pIndex.attr("class", "today  uv uvBox");
 				// pIndex.attr("id", "uvIndex");
-				pIndex.text("UV Index: " + uvIndex.toFixed(1));
+				pUV.text("UV Index: ");
+				pIndex.text(uvIndex.toFixed(1));
+				$("article").append(pUV);
 				$("article").append(pIndex);
 
 				// Create an array of the 5 day forecast.

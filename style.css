@@ -27,6 +27,7 @@ h1 {
 }
 
 h2 {
+	display: inline-block;
 	color: white;
 	font-size: 36px;
 	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -70,6 +71,28 @@ button {
 	width: 45px;
 	height: 45px;
 	margin-left: 5px;
+}
+
+.mainIcon {
+	display: inline-block;
+	width: 60px;
+	margin: 0 0 15px 20px;
+}
+
+.uv {
+	display: inline-block;
+}
+
+.uvBox {
+	border: solid;
+	border-style: ridge;
+	border-color: red;
+	background-color: red;
+	width: 60px;
+	height: 40px;
+	margin-left: 8px;
+	padding: 0;
+	text-align: center;
 }
 
 .fiveDay {
