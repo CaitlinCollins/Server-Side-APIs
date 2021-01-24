@@ -17,19 +17,22 @@ $(document).ready(function () {
 		searches.attr("class", "searches");
 		searches.text(city);
 		pastSearches.prepend(searches);
-		storeSearches();
+		storeSearches(searches);
 	}
 
 	var searchHist = [];
 	// Store searches
 	function storeSearches(searches) {
+		console.log(searches);
 		// Add the recent search to the array.
-		for (var i = 0; i < searchHist.length; i++) {
+		for (var i = 0; i < searches.length; i++) {
 			searchHist.push(searches[i]);
 		}
 		localStorage.setItem("history", JSON.stringify(searchHist));
 		console.log(searchHist);
 	}
+
+	// Get searches from local storage and render them to the page.
 
 	function searchCity(city) {
 		var queryURL =
