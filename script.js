@@ -1,5 +1,12 @@
 $(document).ready(function () {
 	var inputCity = $("textarea");
+	var pastSearches = $("#pastSearches");
+
+	if (localStorage.length == 0) {
+	} 
+	else {
+		getSearches();
+	}
 
 	// Event listener to grab the name of the city on click.
 	$("button").on("click", function (event) {
@@ -10,9 +17,9 @@ $(document).ready(function () {
 		searchCity(city);
 		prependSearch(city);
 	});
+
 	// Add searched cities to .searches div.
 	function prependSearch(city) {
-		var pastSearches = $("#pastSearches");
 		var searches = $("<div>");
 		searches.attr("class", "searches");
 		searches.text(city);
@@ -20,19 +27,38 @@ $(document).ready(function () {
 		storeSearches(searches);
 	}
 
-	var searchHist = [];
+	var searchHist = JSON.parse(localStorage.getItem("history")) || [];
 	// Store searches
 	function storeSearches(searches) {
-		console.log(searches);
 		// Add the recent search to the array.
 		for (var i = 0; i < searches.length; i++) {
-			searchHist.push(searches[i]);
+			console.log(searches.text());
+			var city = searches.text();
+			searchHist.push(city);
 		}
 		localStorage.setItem("history", JSON.stringify(searchHist));
-		console.log(searchHist);
+		getSearches();
 	}
 
 	// Get searches from local storage and render them to the page.
+	function getSearches() {
+		// get scores from local storage
+		var storedSearches = JSON.parse(localStorage.getItem("history"));
+		console.log(storedSearches);
+		renderSearches(storedSearches);
+	}
+
+	function renderSearches(storedSearches) {
+		pastSearches.empty();
+
+		for (var i = 0; i < storedSearches.length; i++) {
+			console.log(storedSearches[i]);
+			var searches = $("<div>");
+			searches.attr("class", "searches");
+			searches.text(storedSearches[i]);
+			pastSearches.prepend(searches);
+		}
+	}
 
 	function searchCity(city) {
 		var queryURL =
@@ -40,14 +66,10 @@ $(document).ready(function () {
 			city +
 			"&appid=e90f89da353464dd1dc479b73a3a777e";
 
-		console.log(city);
-
 		$.ajax({
 			url: queryURL,
 			method: "GET",
 		}).then(function (response) {
-			console.log(response);
-
 			// Clear the local weather article.
 			$("article").empty();
 
@@ -105,7 +127,6 @@ $(document).ready(function () {
 				url: queryURL,
 				method: "GET",
 			}).then(function (response) {
-				console.log(response);
 				var sectionEl = $("#5DayForecast");
 				sectionEl.empty();
 
@@ -128,8 +149,6 @@ $(document).ready(function () {
 				daily.push(response.daily[3]);
 				daily.push(response.daily[4]);
 				daily.push(response.daily[5]);
-
-				console.log(daily);
 
 				// Cylce through the array and gather information.
 				for (var i = 0; i < daily.length; i++) {
