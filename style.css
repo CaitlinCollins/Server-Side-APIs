@@ -7,11 +7,14 @@ article {
 	margin-top: 10px;
 	background-color: rgb(120, 183, 241);
 	padding: 40px;
+	width: 1000px;
+	height: 400px;
 }
 
 aside {
 	background-color: rgb(206, 236, 247);
-	height: auto;
+	width: 340px;
+	height: 660px;
 	margin-bottom: 20px;
 }
 
@@ -70,13 +73,29 @@ button {
 }
 
 .fiveDay {
+	display: inline-block;
 	height: 180px;
 	width: 160px;
 	background-color: navy;
 	margin: 20px 10px 20px 30px;
 }
 
-/* #pastSearches {
+.days {
+	color: rgb(241, 239, 239);
+	font-size: 18px;
+	text-align: left;
+	padding: 0 0 3px 5px;
+}
+
+/* #uvIndex {
+	border-style: solid;
+	border-color: red;
+	background-color: red;
+	width: 45px;
+	height: 30px;
+} */
+
+.searches {
 	width: 310px;
 	height: 50px;
 	border-style: solid;
@@ -89,4 +108,4 @@ button {
 	background-color: rgb(248, 245, 245);
 	margin-left: 15px;
 	padding: 8px 0 8px 10px;
-} */
+}
