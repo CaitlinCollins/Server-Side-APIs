@@ -10,13 +10,25 @@ $(document).ready(function () {
 		searchCity(city);
 		prependSearch(city);
 	});
-
+	// Add searched cities to .searches div.
 	function prependSearch(city) {
 		var pastSearches = $("#pastSearches");
 		var searches = $("<div>");
 		searches.attr("class", "searches");
 		searches.text(city);
 		pastSearches.prepend(searches);
+		storeSearches();
+	}
+
+	var searchHist = [];
+	// Store searches
+	function storeSearches(searches) {
+		// Add the recent search to the array.
+		for (var i = 0; i < searchHist.length; i++) {
+			searchHist.push(searches[i]);
+		}
+		localStorage.setItem("history", JSON.stringify(searchHist));
+		console.log(searchHist);
 	}
 
 	function searchCity(city) {
@@ -147,7 +159,7 @@ $(document).ready(function () {
 					var humEl = $("<p>");
 					humEl.attr("class", "days");
 					var hum = daily[i].humidity;
-					humEl.text("Humidity: " + hum + " %");
+					humEl.text("Humidity: " + hum + "%");
 					// Append everything to the page.
 					dailyDiv.append(dateEl);
 					dailyDiv.append(iconEl);

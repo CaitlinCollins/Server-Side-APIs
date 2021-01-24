@@ -1,6 +1,11 @@
 header {
 	height: 90px;
-	background-color: rgb(3, 3, 241);
+	background-color: rgb(1, 1, 196);
+}
+
+main {
+	background-color: snow;
+	height: 100vh;
 }
 
 article {
@@ -12,18 +17,15 @@ article {
 }
 
 aside {
-	background-color: lightgray;
+	background-color: snow;
 	width: 340px;
-	height: 660px;
+	height: 100vh;
 	margin-bottom: 20px;
-}
-main {
-	background-color: lightgray;
 }
 
 h1 {
 	padding: 15px;
-	color: white;
+	color: snow;
 	font-family: "Times New Roman", Times, serif;
 	font-size: 50px;
 	font-weight: bold;
@@ -31,7 +33,7 @@ h1 {
 
 h2 {
 	display: inline-block;
-	color: white;
+	color: snow;
 	font-size: 36px;
 	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
 		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -88,9 +90,9 @@ button {
 
 .uvBox {
 	border: solid;
-	border-style: ridge;
-	border-color: red;
-	background-color: red;
+	border-radius: 10px;
+	border-color: rgb(187, 1, 1);
+	background-color: rgb(187, 1, 1);
 	width: 60px;
 	height: 40px;
 	margin-left: 8px;
