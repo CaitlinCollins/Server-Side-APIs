@@ -3,8 +3,7 @@ $(document).ready(function () {
 	var pastSearches = $("#pastSearches");
 
 	if (localStorage.length == 0) {
-	} 
-	else {
+	} else {
 		getSearches();
 	}
 
@@ -58,6 +57,12 @@ $(document).ready(function () {
 			searches.text(storedSearches[i]);
 			pastSearches.prepend(searches);
 		}
+
+		// Toggle between searches on click.
+		$(document).on("click", ".searches", function () {
+			var city = $(this).text();
+			searchCity(city);
+		});
 	}
 
 	function searchCity(city) {
