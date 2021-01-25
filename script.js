@@ -75,65 +75,73 @@ $(document).ready(function () {
 			url: queryURL,
 			method: "GET",
 		}).then(function (response) {
-			// Clear the local weather article.
-			$("article").empty();
-
-			// Add the city name and date to the H2.
+			// Get the city name
 			var cityName = response.name;
-			var today = moment().format("(M/D/YY)");
-			var newH2 = $("<h2>");
-			var icon = response.weather[0].icon;
-			var iconEl = $("<img>");
-			iconEl.attr("class", "mainIcon");
-			iconEl.attr("src", "http://openweathermap.org/img/wn/" + icon + ".png");
-			newH2.html(cityName + " " + today + " ");
-			$("article").append(newH2);
-			$("article").append(iconEl);
-			// Add the current temerature to the first <p> tag.
-			var tempK = response.main.temp;
-			var tempF = (tempK - 273.15) * 1.8 + 32;
-			var pTemp = $("<p>");
-			var fahranheit = "\xB0F";
-			pTemp.attr("class", "today");
-			pTemp.text("Temperature: " + tempF.toFixed(1) + " " + fahranheit);
-			$("article").append(pTemp);
-
-			// Add the current humidity to the second <p> tag.
-			var humidity = response.main.humidity;
-			var pHum = $("<p>");
-			pHum.attr("class", "today");
-			pHum.text("Humidity: " + humidity + "%");
-			$("article").append(pHum);
-
-			// Add the current wind speed to the third <p> tag.
-			var windSpeed = response.wind.speed;
-			var pWind = $("<p>");
-			pWind.attr("class", "today");
-			pWind.text("Wind Speed: " + windSpeed.toFixed(1) + " MPH");
-			$("article").append(pWind);
 
 			// Get the latitude and longitude.
 			var latitude = response.coord.lat;
 			var longitude = response.coord.lon;
 
 			// New ajax call
-			oneCall(latitude, longitude);
+			oneCall(latitude, longitude, cityName);
 		});
 
-		function oneCall(latitude, longitude) {
+		function oneCall(latitude, longitude, cityName) {
 			var queryURL =
 				"https://api.openweathermap.org/data/2.5/onecall?lat=" +
 				latitude +
 				"&lon=" +
 				longitude +
 				"&exclude={part}&appid=e90f89da353464dd1dc479b73a3a777e";
+			console.log(queryURL);
 
 			$.ajax({
 				url: queryURL,
 				method: "GET",
 			}).then(function (response) {
+				// Clear the local weather article.
+				var articleEl = $("article");
+				articleEl.empty();
+
+				// Clear the section element.
 				var sectionEl = $("#5DayForecast");
 				sectionEl.empty();
+				console.log(response);
+
+				// Add the city name and date to the H2.
+				var today = moment().format("(M/D/YY)");
+				var newH2 = $("<h2>");
+				var icon = response.current.weather[0].icon;
+				var iconEl = $("<img>");
+				iconEl.attr("class", "mainIcon");
+				iconEl.attr("src", "http://openweathermap.org/img/wn/" + icon + ".png");
+				newH2.html(cityName + " " + today + " ");
+
+				$("article").append(newH2);
+				$("article").append(iconEl);
+
+				// Add the current temerature to the first <p> tag.
+				var tempK = response.current.temp;
+				var tempF = (tempK - 273.15) * 1.8 + 32;
+				var pTemp = $("<p>");
+				var fahranheit = "\xB0F";
+				pTemp.attr("class", "today");
+				pTemp.text("Temperature: " + tempF.toFixed(1) + " " + fahranheit);
+				$("article").append(pTemp);
+
+				// Add the current humidity to the second <p> tag.
+				var humidity = response.current.humidity;
+				var pHum = $("<p>");
+				pHum.attr("class", "today");
+				pHum.text("Humidity: " + humidity + "%");
+				$("article").append(pHum);
+
+				// Add the current wind speed to the third <p> tag.
+				var windSpeed = response.current.wind_speed;
+				var pWind = $("<p>");
+				pWind.attr("class", "today");
+				pWind.text("Wind Speed: " + windSpeed.toFixed(1) + " MPH");
+				$("article").append(pWind);
 
 				// Add the current UV Index to the fourth <p> tag.
 				var uvIndex = response.current.uvi;
@@ -141,7 +149,7 @@ $(document).ready(function () {
 				var pUV = $("<p>");
 				pUV.attr("class", "today uv");
 				pIndex.attr("class", "today  uv uvBox");
-				// pIndex.attr("id", "uvIndex");
+				pIndex.attr("id", "uvIndex");
 				pUV.text("UV Index: ");
 				pIndex.text(uvIndex.toFixed(1));
 				$("article").append(pUV);
