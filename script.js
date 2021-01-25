@@ -1,17 +1,38 @@
 $(document).ready(function () {
 	var inputCity = $("textarea");
-	var pastSearches = $("#pastSearches");
+	var pastSearches = $("#historySection");
+	var fiveDayForecast = $("#fiveDayForecast");
+	$("article").hide();
+	$("h3").hide();
 
 	if (localStorage.length == 0) {
 	} else {
 		getSearches();
 	}
 
-	// Event listener to grab the name of the city on click.
-	$("button").on("click", function (event) {
+	// Runs the application if the enter key is pressed.
+	inputCity.on("keydown", function (event) {
+		if (event.keyCode === 13) {
+			event.preventDefault();
+			// Storing the city name.
+			var city = inputCity.val().trim();
+			// Show the article and H3
+			$("article").show();
+			$("h3").show();
+			// Running the searchCity function passing in the city as an argument.
+			searchCity(city);
+			prependSearch(city);
+		}
+	});
+
+	// Runs the application if the search button is clicked.
+	$(".citySearch").on("click", function (event) {
 		event.preventDefault();
 		// Storing the city name.
 		var city = inputCity.val().trim();
+		// Show the article and H3
+		$("article").show();
+		$("h3").show();
 		// Running the searchCity function passing in the city as an argument.
 		searchCity(city);
 		prependSearch(city);
@@ -19,11 +40,15 @@ $(document).ready(function () {
 
 	// Add searched cities to .searches div.
 	function prependSearch(city) {
-		var searches = $("<div>");
-		searches.attr("class", "searches");
-		searches.text(city);
-		pastSearches.prepend(searches);
-		storeSearches(searches);
+		if (inputCity === null) {
+			return;
+		} else {
+			var searches = $("<div>");
+			searches.attr("class", "#historySection");
+			searches.text(city);
+			pastSearches.prepend(searches);
+			storeSearches(searches);
+		}
 	}
 
 	var searchHist = JSON.parse(localStorage.getItem("history")) || [];
@@ -31,7 +56,6 @@ $(document).ready(function () {
 	function storeSearches(searches) {
 		// Add the recent search to the array.
 		for (var i = 0; i < searches.length; i++) {
-			console.log(searches.text());
 			var city = searches.text();
 			searchHist.push(city);
 		}
@@ -43,7 +67,6 @@ $(document).ready(function () {
 	function getSearches() {
 		// get scores from local storage
 		var storedSearches = JSON.parse(localStorage.getItem("history"));
-		console.log(storedSearches);
 		renderSearches(storedSearches);
 	}
 
@@ -51,17 +74,24 @@ $(document).ready(function () {
 		pastSearches.empty();
 
 		for (var i = 0; i < storedSearches.length; i++) {
-			console.log(storedSearches[i]);
 			var searches = $("<div>");
 			searches.attr("class", "searches");
 			searches.text(storedSearches[i]);
 			pastSearches.prepend(searches);
 		}
+		// Create a clear searches button.
+		var clearSearch = $("<button>");
+		clearSearch.attr("class", "clear");
+		clearSearch.text("Clear Search History");
+		pastSearches.append(clearSearch);
 
 		// Toggle between searches on click.
 		$(document).on("click", ".searches", function () {
 			var city = $(this).text();
 			searchCity(city);
+			// Show the article and H3
+			$("article").show();
+			$("h3").show();
 		});
 	}
 
@@ -87,13 +117,13 @@ $(document).ready(function () {
 		});
 
 		function oneCall(latitude, longitude, cityName) {
+			// Get the URL for the onecall api
 			var queryURL =
 				"https://api.openweathermap.org/data/2.5/onecall?lat=" +
 				latitude +
 				"&lon=" +
 				longitude +
 				"&exclude={part}&appid=e90f89da353464dd1dc479b73a3a777e";
-			console.log(queryURL);
 
 			$.ajax({
 				url: queryURL,
@@ -102,11 +132,6 @@ $(document).ready(function () {
 				// Clear the local weather article.
 				var articleEl = $("article");
 				articleEl.empty();
-
-				// Clear the section element.
-				var sectionEl = $("#5DayForecast");
-				sectionEl.empty();
-				console.log(response);
 
 				// Add the city name and date to the H2.
 				var today = moment().format("(M/D/YY)");
@@ -155,6 +180,10 @@ $(document).ready(function () {
 				$("article").append(pUV);
 				$("article").append(pIndex);
 
+				// Clear the daily forcast Div.
+				var forecast = $("#fiveDayForecast");
+				forecast.empty();
+
 				// Create an array of the 5 day forecast.
 				var daily = [];
 				daily.push(response.daily[1]);
@@ -200,9 +229,14 @@ $(document).ready(function () {
 					dailyDiv.append(iconEl);
 					dailyDiv.append(tempEl);
 					dailyDiv.append(humEl);
-					sectionEl.append(dailyDiv);
+					fiveDayForecast.append(dailyDiv);
 				}
 			});
 		}
 	}
+	// Click event for clear searches button that empties local storage.
+	$(document).on("click", ".clear", function () {
+		localStorage.clear();
+		$("#historySection").empty();
+	});
 });
