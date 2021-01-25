@@ -1,13 +1,15 @@
 body {
+	padding: 0;
+	margin: 0;
 	background-image: url(assets/sky.jpg);
-	padding: 0px;
-	margin: 0px;
-	background-repeat: no-repeat;
-	width: cover;
+	
+}
+.container-fluid {
+	margin: 20px 0 0 10px;
 }
 
 .header {
-	height: 90px;
+	height: 120px;
 	background-color: rgb(1, 1, 196);
 }
 
@@ -17,7 +19,6 @@ main {
 }
 
 article {
-	margin-left: 100px;
 	padding-top: 10px;
 }
 
@@ -29,7 +30,7 @@ aside {
 }
 
 h1 {
-	padding-top: 15px;
+	padding-top: 30px;
 	color: snow;
 	font-family: "Times New Roman", Times, serif;
 	font-size: 50px;
@@ -39,7 +40,7 @@ h1 {
 h2 {
 	display: inline-block;
 	color: snow;
-	font-size: 26px;
+	font-size: 34px;
 	text-align: center;
 	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
 		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -47,7 +48,7 @@ h2 {
 }
 
 h3 {
-	margin: 20px 0 0 10px;
+	margin: 60px 0 40px 0;
 	padding: 5px;
 	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
 		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -60,15 +61,15 @@ h4 {
 	margin: 50px 0 20px 50px;
 	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
 		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-	font-size: 20px;
+	font-size: 22px;
 	text-align: left;
 	color: snow;
 }
 
-p {
+.today {
 	color: rgb(241, 239, 239);
-	font-size: 22px;
-	padding: 0 0 10px 10px;
+	font-size: 24px;
+	padding: 0 0 10px 15px;
 }
 
 textarea {
@@ -76,8 +77,8 @@ textarea {
 	height: 40px;
 	width: 200px;
 	margin: 0 0 30px 40px;
-	padding: 6px;
-	text-align: center;
+	padding: 5px 0  0 10px;
+	text-align: left;
 	font-size: 20px;
 }
 
@@ -90,8 +91,8 @@ button {
 
 .mainIcon {
 	display: inline-block;
-	width: 100px;
-	margin: 0 0 15px 0;
+	width: 110px;
+	margin: 0 0 12px 0;
 }
 
 .uv {
@@ -122,22 +123,22 @@ button {
 .fiveDay {
 	display: inline-block;
 	text-align: center;
-	height: 180px;
-	width: 160px;
+	height: 200px;
+	width: 180px;
 	background-color: rgb(200, 231, 245);
-	margin: 20px 10px 60px 20px;
+	margin: 20px 30px 60px 0;
 }
 
 .dates {
 	color: grey;
-	font-size: 22px;
+	font-size: 24px;
 	margin: 8px 0 0 0;
 	padding: 0 0 6px 0;
 }
 
 .days {
 	color: grey;
-	font-size: 18px;
+	font-size: 20px;
 	padding: 0 0 6px 0;
 	margin: 0;
 }
@@ -179,8 +180,11 @@ button {
 	text-align: center;
 }
 
-/* * Special styling for screens over 768px *
-@media only screen and (min-width: 768px) {
+/* * Special styling for screens under 1280px *
+@media only screen and (max-width: 1280px) {
+
+/* * Special styling for screens under 768px *
+@media only screen and (max-width: 768px) {
 	textarea,
 	.searches,
 	.clear {
@@ -197,22 +201,3 @@ button {
 		margin: 40px 50px 20px 0;
 	}
 }
-/** Special styling for screens over 1280px **/
-/* @media only screen and (min-width: 1280px) {
-	textarea,
-	.searches,
-	.clear {
-		margin-left: 0;
-	}
-
-	h4 {
-		text-align: left;
-	}
-
-	aside {
-		float: left;
-	}
-	article {
-		float: right;
-	}
-} */
