@@ -28,7 +28,6 @@ article {
 
 aside {
 	background: transparent;
-	text-align: center;
 	width: 340px;
 	height: auto;
 	margin-bottom: 20px;
@@ -38,7 +37,7 @@ h1 {
 	padding-top: 20px;
 	color: snow;
 	font-family: "Times New Roman", Times, serif;
-	font-size: 40px;
+	font-size: 38px;
 	font-weight: bold;
 }
 
@@ -84,9 +83,9 @@ textarea {
 	float: left;
 	height: 40px;
 	width: 160px;
-	margin: 0 0 30px 74px;
+	margin: 0 0 30px 75px;
 	padding: 5px;
-	text-align: center;
+	text-align: left;
 	font-size: 20px;
 }
 
@@ -137,7 +136,7 @@ button {
 	height: 180px;
 	width: 160px;
 	background-color: rgb(200, 231, 245);
-	margin: 60px 20px 20px 15px;
+	margin: 20px 20px 60px 15px;
 }
 
 .dates {
@@ -189,4 +188,23 @@ button {
 	color: snow;
 	margin: 10px 0 0 75px;
 	text-align: center;
+}
+
+/** Special styling for screens under 768px **/
+@media only screen and (min-width: 768px) {
+	textarea,
+	.searches,
+	.clear {
+		margin-left: 240px;
+	}
+
+	h2 {
+		margin-left: 80px;
+	}
+	h3 {
+		margin: 40px 0;
+	}
+	h4 {
+		margin: 40px 50px 20px 0;
+	}
 }
