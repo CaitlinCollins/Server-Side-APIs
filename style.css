@@ -1,11 +1,12 @@
-.container {
+body {
 	background-image: url(assets/sky.jpg);
-	background-size: cover;
-	background-attachment: fixed;
-	height: 100vh;
+	padding: 0px;
+	margin: 0px;
+	background-repeat: no-repeat;
+	width: cover;
 }
 
-header {
+.header {
 	height: 90px;
 	background-color: rgb(1, 1, 196);
 }
@@ -16,14 +17,8 @@ main {
 }
 
 article {
-	margin-top: 10px;
-	text-align: center;
-	background-image: url(assets/sky.jpg);
-	background-size: cover;
-	background-attachment: fixed;
-	height: auto;
-	width: auto;
-	padding-bottom: 60px;
+	margin-left: 100px;
+	padding-top: 10px;
 }
 
 aside {
@@ -34,10 +29,10 @@ aside {
 }
 
 h1 {
-	padding-top: 20px;
+	padding-top: 15px;
 	color: snow;
 	font-family: "Times New Roman", Times, serif;
-	font-size: 38px;
+	font-size: 50px;
 	font-weight: bold;
 }
 
@@ -49,27 +44,24 @@ h2 {
 	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
 		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 	font-weight: bolder;
-	margin: 20px 0 10px 0;
 }
 
 h3 {
-	margin: 40px 0 0 0;
-	height: 60px;
-	padding: 15px;
+	margin: 20px 0 0 10px;
+	padding: 5px;
 	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
 		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 	font-size: 26px;
-	text-align: center;
+	text-align: left;
 	color: snow;
-	background-color: rgb(1, 1, 196);
 }
 
 h4 {
-	margin: 20px 0 10px 0;
+	margin: 50px 0 20px 50px;
 	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
 		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 	font-size: 20px;
-	text-align: center;
+	text-align: left;
 	color: snow;
 }
 
@@ -82,10 +74,10 @@ p {
 textarea {
 	float: left;
 	height: 40px;
-	width: 160px;
-	margin: 0 0 30px 75px;
-	padding: 5px;
-	text-align: left;
+	width: 200px;
+	margin: 0 0 30px 40px;
+	padding: 6px;
+	text-align: center;
 	font-size: 20px;
 }
 
@@ -98,7 +90,7 @@ button {
 
 .mainIcon {
 	display: inline-block;
-	width: 160px;
+	width: 100px;
 	margin: 0 0 15px 0;
 }
 
@@ -123,10 +115,7 @@ button {
 }
 
 #fiveDayForecast {
-	text-align: center;
-	background-image: url(assets/sky.jpg);
-	background-size: cover;
-	background-attachment: fixed;
+	text-align: left;
 	height: 100%;
 }
 
@@ -136,7 +125,7 @@ button {
 	height: 180px;
 	width: 160px;
 	background-color: rgb(200, 231, 245);
-	margin: 20px 20px 60px 15px;
+	margin: 20px 10px 60px 20px;
 }
 
 .dates {
@@ -161,7 +150,7 @@ button {
 .searches {
 	width: 200px;
 	height: 40px;
-	text-align: center;
+	text-align: left;
 	border-style: solid;
 	border-color: navy;
 	border-width: 1px;
@@ -170,8 +159,8 @@ button {
 		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 	color: grey;
 	background-color: rgb(248, 245, 245);
-	margin: 0 0 2px 75px;
-	padding: 3px 0 0 0;
+	margin: 0 0 2px 40px;
+	padding: 4px 0 0 10px;
 }
 .searches:hover {
 	cursor: pointer;
@@ -186,11 +175,11 @@ button {
 	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
 		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 	color: snow;
-	margin: 10px 0 0 75px;
+	margin: 10px 0 0 40px;
 	text-align: center;
 }
 
-/** Special styling for screens under 768px **/
+/* * Special styling for screens over 768px *
 @media only screen and (min-width: 768px) {
 	textarea,
 	.searches,
@@ -208,3 +197,22 @@ button {
 		margin: 40px 50px 20px 0;
 	}
 }
+/** Special styling for screens over 1280px **/
+/* @media only screen and (min-width: 1280px) {
+	textarea,
+	.searches,
+	.clear {
+		margin-left: 0;
+	}
+
+	h4 {
+		text-align: left;
+	}
+
+	aside {
+		float: left;
+	}
+	article {
+		float: right;
+	}
+} */
