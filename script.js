@@ -1,7 +1,8 @@
 $(document).ready(function () {
-	var inputCity = $("textarea");
+	var inputCity = $("inputs");
 	var pastSearches = $("#historySection");
 	var fiveDayForecast = $("#fiveDayForecast");
+	var city;
 	$("article").hide();
 	$("h3").hide();
 
@@ -15,13 +16,12 @@ $(document).ready(function () {
 		if (event.keyCode === 13) {
 			event.preventDefault();
 			// Storing the city name.
-			var city = inputCity.val().trim();
+			city = inputCity.val().trim();
 			// Show the article and H3
 			$("article").show();
 			$("h3").show();
 			// Running the searchCity function passing in the city as an argument.
 			searchCity(city);
-			prependSearch(city);
 		}
 	});
 
@@ -29,13 +29,12 @@ $(document).ready(function () {
 	$(".citySearch").on("click", function (event) {
 		event.preventDefault();
 		// Storing the city name.
-		var city = inputCity.val().trim();
+		city = inputCity.val().trim();
 		// Show the article and H3
 		$("article").show();
 		$("h3").show();
 		// Running the searchCity function passing in the city as an argument.
 		searchCity(city);
-		prependSearch(city);
 	});
 
 	// Add searched cities to .searches div.
@@ -104,17 +103,24 @@ $(document).ready(function () {
 		$.ajax({
 			url: queryURL,
 			method: "GET",
-		}).then(function (response) {
-			// Get the city name
-			var cityName = response.name;
+		})
+			.then(function (response) {
+				// Get the city name
+				var cityName = response.name;
 
-			// Get the latitude and longitude.
-			var latitude = response.coord.lat;
-			var longitude = response.coord.lon;
+				// Get the latitude and longitude.
+				var latitude = response.coord.lat;
+				var longitude = response.coord.lon;
 
-			// New ajax call
-			oneCall(latitude, longitude, cityName);
-		});
+				// New ajax call
+				oneCall(latitude, longitude, cityName);
+				prependSearch(cityName);
+			})
+			.catch(function (error) {
+				console.log("This is an error!");
+				alert("Please enter a valid city name!");
+				return;
+			});
 
 		function oneCall(latitude, longitude, cityName) {
 			// Get the URL for the onecall api
@@ -238,5 +244,6 @@ $(document).ready(function () {
 	$(document).on("click", ".clear", function () {
 		localStorage.clear();
 		$("#historySection").empty();
+		location.reload();
 	});
 });
