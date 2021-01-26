@@ -14,7 +14,7 @@ Weather Dashboard
 
 ## Description
 
-The purpose of this project was to create a weather dashboard that allows the user search for a city and see the current weather conditions as well as the five day forecast. 
+The purpose of this project was to create a weather dashboard that allows the user to search for a city and see the current weather conditions, as well as the five day forecast. 
 ## Tools
 
 - OpenWeather APIs
