@@ -7,7 +7,7 @@ $(document).ready(function () {
 	var lastSearched = searchHist[searchHist.length - 1];
 
 	// Checks to see if there is anything in the local storage.
-	if (localStorage.length == 0) {
+	if (localStorage.length === 0) {
 	} else {
 		getSearches();
 		// Uses local storage to search the last searched city on page load.
