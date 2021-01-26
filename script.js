@@ -7,7 +7,7 @@ $(document).ready(function () {
 	var lastSearched = searchHist[searchHist.length - 1];
 
 	// Checks to see if there is anything in the local storage.
-	if (localStorage.length == 0) {
+	if (localStorage.length != 0) {
 		getSearches();
 		// Uses local storage to search the last searched city on page load.
 		searchCity(lastSearched);
@@ -105,7 +105,7 @@ $(document).ready(function () {
 	//  Use the input to search openweather api for that city.
 	function searchCity(city) {
 		var queryURL =
-			"https://api.openweathermap.org/data/2.5/weather?q=" +
+			"http://api.openweathermap.org/data/2.5/weather?q=" +
 			city +
 			"&appid=e90f89da353464dd1dc479b73a3a777e";
 
