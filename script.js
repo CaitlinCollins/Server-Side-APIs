@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	var inputCity = $("inputs");
+	var inputCity = $("input");
 	var pastSearches = $("#historySection");
 	var fiveDayForecast = $("#fiveDayForecast");
 	var city;
