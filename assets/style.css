@@ -2,7 +2,7 @@
 body {
 	padding: 0;
 	margin: 0;
-	background-image: url(assets/sky.jpg);
+	background-image: url(sky.jpg);
 	background-size: cover;
 }
 .container-fluid {

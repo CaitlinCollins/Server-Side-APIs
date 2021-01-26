@@ -4,15 +4,14 @@ $(document).ready(function () {
 	var fiveDayForecast = $("#fiveDayForecast");
 	var searchHist = JSON.parse(localStorage.getItem("history")) || [];
 	var city;
-
-	// Hides the article and h3 on page load.
-	$("article").hide();
-	$("h3").hide();
+	var lastSearched = searchHist[searchHist.length - 1];
 
 	// Checks to see if there is anything in the local storage.
 	if (localStorage.length == 0) {
 	} else {
 		getSearches();
+		// Uses local storage to search the last searched city on page load.
+		searchCity(lastSearched);
 	}
 
 	// Runs the application if the enter key is pressed.
@@ -100,6 +99,9 @@ $(document).ready(function () {
 		$("article").show();
 		$("h3").show();
 	});
+
+	// // Display the last searched city on the page.
+	// function lastSearched()
 
 	//  Use the input to search openweather api for that city.
 	function searchCity(city) {
@@ -194,9 +196,13 @@ $(document).ready(function () {
 				$("article").append(pUV);
 				$("article").append(pIndex);
 
-				// Clear the daily forcast Div.
-				var forecast = $("#fiveDayForecast");
-				forecast.empty();
+				// Empty the forecast div.
+				fiveDayForecast.empty();
+
+				// Create and append h3 element
+				h3El = $("<h3>");
+				h3El.text("5-Day Forecast:");
+				fiveDayForecast.append(h3El);
 
 				// Create an array of the 5 day forecast.
 				var daily = [];
@@ -251,7 +257,7 @@ $(document).ready(function () {
 	// Click event for clear searches button that empties local storage.
 	$(document).on("click", ".clear", function () {
 		localStorage.clear();
-		$("#historySection").empty();
 		location.reload();
+		searchCity(lastSearched);
 	});
 });
