@@ -44,11 +44,11 @@ The purpose of this project was to create a weather dashboard that allows the us
 - No errors in the console log.
 
 ## Screen Shots ## 
-![weather1](https://github.com/CaitlinCollins/Server-Side-APIs/blob/main/Assets/screenshots/weather1.png)
-![weather2](https://github.com/CaitlinCollins/Server-Side-APIs/blob/main/Assets/screenshots/weather2.png)
-![weather3](https://github.com/CaitlinCollins/Server-Side-APIs/blob/main/Assets/screenshots/weather3.png)
-![weather4](https://github.com/CaitlinCollins/Server-Side-APIs/blob/main/Assets/screenshots/weather4.png)
-![weather5](https://github.com/CaitlinCollins/Server-Side-APIs/blob/main/Assets/screenshots/weather5.png)
+![weather1](https://github.com/CaitlinCollins/Server-Side-APIs/blob/main/assets/screenshots/weather1.png)
+![weather2](https://github.com/CaitlinCollins/Server-Side-APIs/blob/main/assets/screenshots/weather2.png)
+![weather3](https://github.com/CaitlinCollins/Server-Side-APIs/blob/main/assets/screenshots/weather3.png)
+![weather4](https://github.com/CaitlinCollins/Server-Side-APIs/blob/main/assets/screenshots/weather4.png)
+![weather5](https://github.com/CaitlinCollins/Server-Side-APIs/blob/main/assets/screenshots/weather5.png)
 
 
 ## Deploy Link ##
