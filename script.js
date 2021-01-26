@@ -2,6 +2,7 @@ $(document).ready(function () {
 	var inputCity = $("input");
 	var pastSearches = $("#historySection");
 	var fiveDayForecast = $("#fiveDayForecast");
+	var searchHist = JSON.parse(localStorage.getItem("history")) || [];
 	var city;
 	$("article").hide();
 	$("h3").hide();
@@ -50,13 +51,16 @@ $(document).ready(function () {
 		}
 	}
 
-	var searchHist = JSON.parse(localStorage.getItem("history")) || [];
 	// Store searches
 	function storeSearches(searches) {
 		// Add the recent search to the array.
 		for (var i = 0; i < searches.length; i++) {
 			var city = searches.text();
-			searchHist.push(city);
+			if (searchHist.includes(city)) {
+				break;
+			} else {
+				searchHist.push(city);
+			}
 		}
 		localStorage.setItem("history", JSON.stringify(searchHist));
 		getSearches();
