@@ -83,16 +83,15 @@ $(document).ready(function () {
 		clearSearch.attr("class", "clear");
 		clearSearch.text("Clear Search History");
 		pastSearches.append(clearSearch);
-
-		// Toggle between searches on click.
-		$(document).on("click", ".searches", function () {
-			var city = $(this).text();
-			searchCity(city);
-			// Show the article and H3
-			$("article").show();
-			$("h3").show();
-		});
 	}
+	// Toggle between searches on click.
+	$(document).on("click", ".searches", function () {
+		var city = $(this).text();
+		searchCity(city);
+		// Show the article and H3
+		$("article").show();
+		$("h3").show();
+	});
 
 	function searchCity(city) {
 		var queryURL =
