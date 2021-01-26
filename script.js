@@ -151,7 +151,10 @@ $(document).ready(function () {
 				var icon = response.current.weather[0].icon;
 				var iconEl = $("<img>");
 				iconEl.attr("class", "mainIcon");
-				iconEl.attr("src", "http://openweathermap.org/img/wn/" + icon + ".png");
+				iconEl.attr(
+					"src",
+					"https://openweathermap.org/img/wn/" + icon + ".png"
+				);
 				newH2.html(cityName + " " + today + " ");
 
 				$("article").append(newH2);
@@ -234,7 +237,7 @@ $(document).ready(function () {
 					iconEl.attr("class", "dailyIcon");
 					iconEl.attr(
 						"src",
-						"http://openweathermap.org/img/wn/" + icon + ".png"
+						"https://openweathermap.org/img/wn/" + icon + ".png"
 					);
 					// Get the daily high temp.
 					var tempEl = $("<p>");
