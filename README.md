@@ -39,8 +39,8 @@ The purpose of this project was to create a weather dashboard that allows the us
 - The 5-day forecast for the searched city, including: date, weather icon, temperature, and humidity.
 - An interactive search history that toggles between recent searches.
 - Search history saved to local storage and appears upon page refresh.
-- A clear button that clears the local storage and refreshes the page.
 - The most recent city searched saved to the page upon refresh.
+- A clear button that clears the local storage and clears and refreshes the enitre page.
 - No errors in the console log.
 
 ## Screen Shots ## 
