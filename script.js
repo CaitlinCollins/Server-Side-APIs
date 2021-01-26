@@ -70,7 +70,7 @@ $(document).ready(function () {
 	// Get searches from local storage and render them to the page.
 	function getSearches() {
 		// get scores from local storage
-		var storedSearches = JSON.parse(localStorage.getItem("history"));
+		var storedSearches = JSON.parse(localStorage.getItem("history")) || [];
 		renderSearches(storedSearches);
 	}
 
@@ -98,9 +98,6 @@ $(document).ready(function () {
 		$("article").show();
 		$("h3").show();
 	});
-
-	// // Display the last searched city on the page.
-	// function lastSearched()
 
 	//  Use the input to search openweather api for that city.
 	function searchCity(city) {
