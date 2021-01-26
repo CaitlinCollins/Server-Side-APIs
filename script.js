@@ -4,9 +4,12 @@ $(document).ready(function () {
 	var fiveDayForecast = $("#fiveDayForecast");
 	var searchHist = JSON.parse(localStorage.getItem("history")) || [];
 	var city;
+
+	// Hides the article and h3 on page load.
 	$("article").hide();
 	$("h3").hide();
 
+	// Checks to see if there is anything in the local storage.
 	if (localStorage.length == 0) {
 	} else {
 		getSearches();
@@ -73,6 +76,7 @@ $(document).ready(function () {
 		renderSearches(storedSearches);
 	}
 
+	// Render the stored searches to the page.
 	function renderSearches(storedSearches) {
 		pastSearches.empty();
 
@@ -97,6 +101,7 @@ $(document).ready(function () {
 		$("h3").show();
 	});
 
+	//  Use the input to search openweather api for that city.
 	function searchCity(city) {
 		var queryURL =
 			"http://api.openweathermap.org/data/2.5/weather?q=" +
@@ -119,8 +124,8 @@ $(document).ready(function () {
 				oneCall(latitude, longitude, cityName);
 				prependSearch(cityName);
 			})
+			// Catch any misspellings or empty inputs.
 			.catch(function (error) {
-				console.log("This is an error!");
 				alert("Please enter a valid city name!");
 				return;
 			});
