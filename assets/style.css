@@ -58,13 +58,24 @@ h2 {
 .uvBox {
 	border: solid;
 	border-radius: 10px;
-	border-color: rgb(187, 1, 1);
-	background-color: rgb(187, 1, 1);
 	width: 60px;
 	height: 40px;
 	margin-left: 8px;
 	padding: 0;
 	text-align: center;
+}
+
+#high {
+	border-color: rgb(187, 1, 1);
+	background-color: rgb(187, 1, 1);
+}
+#mod {
+	border-color: goldenrod;
+	background-color: goldenrod;
+}
+#low {
+	border-color: green;
+	background-color: green;
 }
 
 /******* Styling of everything below the Article *******/

@@ -191,6 +191,14 @@ $(document).ready(function () {
 				pUV.attr("class", "today uv");
 				pIndex.attr("class", "today  uv uvBox");
 				pIndex.attr("id", "uvIndex");
+				// Color code the uvIdex to low, moderate, or high.
+				if (uvIndex <= 2) {
+					pIndex.attr("id", "low");
+				} else if (uvIndex > 2 && uvIndex <= 5) {
+					pIndex.attr("id", "mod");
+				} else {
+					pIndex.attr("id", "high");
+				}
 				pUV.text("UV Index: ");
 				pIndex.text(uvIndex.toFixed(2));
 				$("article").append(pUV);
