@@ -185,7 +185,7 @@ $(document).ready(function () {
 				pIndex.attr("class", "today  uv uvBox");
 				pIndex.attr("id", "uvIndex");
 				pUV.text("UV Index: ");
-				pIndex.text(uvIndex.toFixed(1));
+				pIndex.text(uvIndex.toFixed(2));
 				$("article").append(pUV);
 				$("article").append(pIndex);
 
