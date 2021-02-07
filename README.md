@@ -1,5 +1,9 @@
 # Server-Side-APIs
 Weather Dashboard
+
+## Deploy Link ##
+https://caitlincollins.github.io/Server-Side-APIs/
+
 ## Table of Contents
 
 [Description](https://github.com/CaitlinCollins/Server-Side-APIs#description)
@@ -10,7 +14,10 @@ Weather Dashboard
 
 [Screen Shots](https://github.com/CaitlinCollins/Server-Side-APIs#screen-shots)
 
-[Deploy Link](https://github.com/CaitlinCollinsServer-Side-APIs#deploy-link)
+[License](https://github.com/CaitlinCollins/Server-Side-APIs#license)
+
+[Author](https://github.com/CaitlinCollins/Server-Side-APIs#author)
+
 
 ## Description
 
@@ -50,7 +57,10 @@ The purpose of this project was to create a weather dashboard that allows the us
 ![weather4](https://github.com/CaitlinCollins/Server-Side-APIs/blob/main/assets/screenshots/weather4.png)
 ![weather5](https://github.com/CaitlinCollins/Server-Side-APIs/blob/main/assets/screenshots/weather5.png)
 
+## License ##
 
-## Deploy Link ##
-https://caitlincollins.github.io/Server-Side-APIs/
+MIT
 
+## Author ##
+
+Caitlin Collins caitlin.aileen86@gmail.com
